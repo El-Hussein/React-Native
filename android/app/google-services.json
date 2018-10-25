@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "578285303455",
+    "firebase_url": "https://computer-shop-2020.firebaseio.com",
+    "project_id": "computer-shop-2020",
+    "storage_bucket": "computer-shop-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578285303455:android:77ff02394bf303ee",
+        "android_client_info": {
+          "package_name": "com.fbsdkproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "578285303455-0g0j63p4ss4qppb43piasn8os0qgvjhr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fbsdkproject",
+            "certificate_hash": "b82f720611f1242f9e2db19b63cb5110c9383732"
+          }
+        },
+        {
+          "client_id": "578285303455-r8mondr46v18vh3lo9olsmluqdfd38b9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4A2WWrJb19arP9iQrg4vCoYjObXqRH54"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578285303455-r8mondr46v18vh3lo9olsmluqdfd38b9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
