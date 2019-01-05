@@ -1,12 +1,13 @@
 import { createStackNavigator } from 'react-navigation';
 
 import AuthHome from "../components/auth/AuthHome";
-import RegisterScreen from "../components/auth/RegisterScreen";
+import Login from "../components/auth/Login";
+import RegisterScreen from "../components/auth/Signup";
 import ForgetPassword from "../components/auth/ForgetPassword";
 
 const AuthNavigator = createStackNavigator({
-    AuthHome: {
-        screen: AuthHome,
+    Login: {
+        screen: Login,
         navigationOption:{
             title:"Auth Home", 
         }
@@ -29,5 +30,6 @@ const AuthNavigator = createStackNavigator({
         header: null,
     }
 })
+
 
 export default AuthNavigator;

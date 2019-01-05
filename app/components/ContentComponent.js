@@ -4,6 +4,12 @@ import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-goog
 import { LoginManager,LoginButton,AccessToken,GraphRequest,GraphRequestManager} from 'react-native-fbsdk';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  listenOrientationChange as lor,
+  removeOrientationListener as rol
+} from 'react-native-responsive-screen';
 
 import { LocalImageProfile, LocalImageMenuCategory } from './LocalImage';
 
@@ -29,9 +35,9 @@ class ContentComponent extends Component{
       super(props)
       this.state = {
         isLoading: true,
-        socialAccess: null,
-        socialType: '',
-        user: null,
+        socialAccess: {test:"TEST"},
+        socialType: 'google',
+        user: {name:'hi', user:{photo:login_bg}},
         updated: false,
         categories: [
           {image:{src: cat1_image, width:2480, height:3508}, name:"Offers"},
@@ -118,7 +124,7 @@ class ContentComponent extends Component{
     render() {
       const { navigate } = this.props.navigation;
       let widthCount = 1 + this.state.categories.length;
-      if(this.state.isLoading || !this.state.isLoading){
+      if(true){
         return(
           // <View style={styles.loaderContainer}>
           //   <ActivityIndicator/>
@@ -129,9 +135,9 @@ class ContentComponent extends Component{
               <View style={{flex:2}}>
                   <ImageBackground source={login_bg} style={{ flex:1, justifyContent:'center', alignItems:'center'}}>
                     <LocalImageProfile source={username} originalWidth={48} originalHeight={48}/>
-                    <Text style={{color:'white', opacity:0.9, fontSize:23, fontWeight:'bold'}}> Welcome </Text>
-                    <TouchableOpacity>
-                      <Text style={{color:'white', opacity:0.9, fontSize:23, fontWeight:'bold'}}> Log in / Sign up </Text>
+                    <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> Welcome </Text>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('UserNavigator')}>
+                      <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> Hussein </Text>
                     </TouchableOpacity>
                   </ImageBackground>
               </View>
@@ -139,38 +145,98 @@ class ContentComponent extends Component{
                 <FlatList 
                   data={this.state.categories}
                   renderItem={({item}) =>
-                    <View style={{marginRight:--widthCount * 15, marginVertical: 2.5}}>
-                        <View style={{justifyContent:'space-between' ,backgroundColor:"#03507E", paddingHorizontal:3, borderRadius:4,  flexDirection:'row', alignItems:'center'}}>
-                          <Text style={{color:'white', fontSize:22, fontWeight:'bold', marginLeft:10}}>{item.name}</Text>
+                    <View style={{marginRight:wp(((--widthCount * 15)/411.4*100).toString() + '%'), marginVertical: hp((2.5/683.4*100).toString() + '%')}}>
+                        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Category')} style={{justifyContent:'space-between' ,backgroundColor:"#03507E", paddingHorizontal:wp(((3)/411.4*100).toString() + '%'), borderTopRightRadius:wp(((4)/411.4*100).toString() + '%'), borderBottomRightRadius:wp(((4)/411.4*100).toString() + '%'),  flexDirection:'row', alignItems:'center'}}>
+                          <Text style={{color:'white', fontSize:wp('5.5%'), fontWeight:'bold', marginLeft:wp(((10)/411.4*100).toString() + '%')}}>{item.name}</Text>
                           <LocalImageMenuCategory source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                     // widthCount+=10;
                   }
                   
                   keyExtractor={item => toString(item.name)}
-                  style={{flex:1, marginTop:40,}}
+                  style={{flex:1, marginTop:wp(((40)/411.4*100).toString() + '%'),}}
                 />
               </View>
               <View style={{flex:1}}>
-                <View style={{flexDirection:'row', marginLeft:"5%"}}>
+                <View style={{flexDirection:'row', marginLeft:wp("5%")}}>
                   <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
-                    <Icon name="user-circle" size={20} color='white'/>
-                    <Text style={{color:'white', fontSize:15, margin:7, fontWeight:'bold'}}> My Account </Text>
+                    <Icon name="user-circle" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> My Account </Text>
                   </View>
-                  <View style={{marginLeft:"5%", flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
-                    <Icon name="file" size={20} color='white'/>
-                    <Text style={{color:'white', fontSize:15, margin:7, fontWeight:'bold'}}> New Feed </Text>
+                  <View style={{marginLeft:wp("5%"), flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+                    <Icon name="file" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> New Feed </Text>
                   </View>
                 </View>
                 <View style={{flexDirection:'row', marginLeft:"5%"}}>
                   <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
-                    <Icon name="heart" size={20} color='white'/>
-                    <Text style={{color:'white', fontSize:15, margin:7, fontWeight:'bold'}}> My WishList </Text>
+                    <Icon name="heart" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> My WishList </Text>
                   </View>
                   <View style={{marginLeft:"5%", flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
-                    <Icon name="undo" size={20} color='white'/>
-                    <Text style={{color:'white', fontSize:15, margin:7, fontWeight:'bold'}}> Return Policy </Text>
+                    <Icon name="undo" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> Return Policy </Text>
+                  </View>
+                </View>
+              </View>
+            </ImageBackground>
+          </View> 
+        )
+      }
+      else if(!this.state.isLoading){
+        return(
+          // <View style={styles.loaderContainer}>
+          //   <ActivityIndicator/>
+          //   <Text> Loading...</Text>
+          // </View>
+          <View style={{flex:1}}>
+            <ImageBackground source={menu_bg} style={{ flex:1}}>
+              <View style={{flex:2}}>
+                  <ImageBackground source={login_bg} style={{ flex:1, justifyContent:'center', alignItems:'center'}}>
+                    <LocalImageProfile source={username} originalWidth={48} originalHeight={48}/>
+                    <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> Welcome </Text>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('AuthNavigator')}>
+                      <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> Log in / Sign up </Text>
+                    </TouchableOpacity>
+                  </ImageBackground>
+              </View>
+              <View style={{flex:5}}>
+                <FlatList 
+                  data={this.state.categories}
+                  renderItem={({item}) =>
+                    <View style={{marginRight:wp(((--widthCount * 15)/411.4*100).toString() + '%'), marginVertical: hp((2.5/683.4*100).toString() + '%')}}>
+                        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Category')} style={{justifyContent:'space-between' ,backgroundColor:"#03507E", paddingHorizontal:wp(((3)/411.4*100).toString() + '%'), borderTopRightRadius:wp(((4)/411.4*100).toString() + '%'), borderBottomRightRadius:wp(((4)/411.4*100).toString() + '%'),  flexDirection:'row', alignItems:'center'}}>
+                          <Text style={{color:'white', fontSize:wp('5.5%'), fontWeight:'bold', marginLeft:wp(((10)/411.4*100).toString() + '%')}}>{item.name}</Text>
+                          <LocalImageMenuCategory source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/>
+                        </TouchableOpacity>
+                    </View>
+                    // widthCount+=10;
+                  }
+                  
+                  keyExtractor={item => toString(item.name)}
+                  style={{flex:1, marginTop:wp(((40)/411.4*100).toString() + '%'),}}
+                />
+              </View>
+              <View style={{flex:1}}>
+                <View style={{flexDirection:'row', marginLeft:wp("5%")}}>
+                  <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+                    <Icon name="user-circle" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> My Account </Text>
+                  </View>
+                  <View style={{marginLeft:wp("5%"), flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+                    <Icon name="file" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> New Feed </Text>
+                  </View>
+                </View>
+                <View style={{flexDirection:'row', marginLeft:"5%"}}>
+                  <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+                    <Icon name="heart" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> My WishList </Text>
+                  </View>
+                  <View style={{marginLeft:"5%", flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+                    <Icon name="undo" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> Return Policy </Text>
                   </View>
                 </View>
               </View>
@@ -216,14 +282,14 @@ class ContentComponent extends Component{
           </ScrollView>
         );
       }
-      else if(this.state.user){
+      else if(this.state.user|| true){
 
         return (
           <ScrollView>
             <View style={styles.authView}>
             <TouchableOpacity onPress={()=> {this.props.navigation.navigate('UserProfile');}}>
               <Image
-                source={{uri: this.state.user.user.photo}}
+                source={{source: this.state.user.user.photo}}
                 style={{width:50, height:50, margin:20, borderRadius:50}}
                 />
               <Text> {this.state.user.user.name} here now </Text> 

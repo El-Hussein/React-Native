@@ -18,6 +18,12 @@ import logo from '../components/images/CompuMe.png';
 import search from '../components/images/search.png';
 import contact_num from '../components/images/contact_num.png';
 import {LocalImage, LocalImageBig, SponserImage} from '../components/LocalImage';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  listenOrientationChange as lor,
+  removeOrientationListener as rol
+} from 'react-native-responsive-screen';
 
 import cat1_image from '../components/images/cat_1.png';
 import cat2_image from '../components/images/cat_2.png';
@@ -30,7 +36,7 @@ import sponser4 from '../components/images/sponser4.png';
 import sponser5 from '../components/images/sponser5.png';
 
 const Slider = props => ( <View style={[styles.imageContainer, {alignItems:'center', justifyContent:'center', marginTop:10,}]}>
-        <Image style={styles.image_slider} source={props.uri}/>
+        <Image style={{height:hp('14.8%'), width:wp('99%')}} source={props.uri} resizeMode="contain"/>
     </View>
 )
 
@@ -40,8 +46,8 @@ class Home extends Component{
     super()
     this.state = {
       imagesSlider: [
-        require('../components/images/1.jpg'),
         require('../components/images/2.jpg'),
+        require('../components/images/1.jpg'),
         require('../components/images/3.jpg'),
       ],
       categories: [
@@ -73,48 +79,49 @@ class Home extends Component{
     return (
       <View style={{flex:1}}>
           {/* Header */}
-          <View style={styles.header}>
-            <ImageBackground source={header_bg} style={styles.header_image_bg}>
-              <Icon name="bars" size={25} color="white" onPress={()=>alert('drawer Open')}/>
-              <Image source={logo} style={styles.logo}/>
-              <View style={{paddingLeft:5}}>
-                <TouchableOpacity>
-                  <View style={{flexDirection:'row', alignContent:'space-between'}}>
-                    <Icon name="shopping-cart" size={20} color="white"/>
-                    <Text style={{color:'white', padding:2, fontWeight:'bold'}}>My Cart</Text>
+          <View style={{ height:hp((65/683.4*100).toString() + '%')}}>
+              <ImageBackground source={header_bg} style={styles.header_image_bg}>
+                  <Icon name="bars" size={wp('6%')} color="white" onPress={()=>alert('drawer Open')} style={{marginLeft:wp('1.8%')}}/>
+                  <Image source={logo} style={{ marginTop:wp('1%'), width:wp('59%'), height:hp('9%'), resizeMode:'contain' }}/>
+                  <View style={{paddingLeft:wp((5/411.4*100).toString() + '%')}}>
+                      <TouchableOpacity>
+                      <View style={{flexDirection:'row', alignContent:'space-between'}}>
+                          <Icon name="shopping-cart" size={hp('3%')} color="white"/>
+                          <Text style={{color:'white', padding:wp((2/411.4*100).toString() + '%'), fontWeight:'bold', fontSize:wp('3.5%')}}>My Cart</Text>
+                      </View>
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                      <View style={{flexDirection:'row', alignContent:'space-between'}}>
+                          <Icon name="compress" size={hp('3%')} color="white"/>
+                          <Text style={{color:'white', padding:wp((2/411.4*100).toString() + '%'), fontWeight:'bold', fontSize:wp('3.5%')}}>Compare</Text>
+                      </View>
+                      </TouchableOpacity>
                   </View>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <View style={{flexDirection:'row', alignContent:'space-between'}}>
-                    <Icon name="compress" size={20} color="white"/>
-                    <Text style={{color:'white', padding:2, fontWeight:'bold'}}>Compare</Text>
+                  <View style={{height:hp('9%'), alignItems:'center'}}>
+                      <TouchableOpacity style={{justifyContent:'center', alignItems:'center'}}>
+                          <Image source={search} style={{resizeMode:'contain', width:wp((30/411.4*100).toString() + '%'), height:hp((30/683.4*100).toString() + '%')}}/>
+                      </TouchableOpacity>
+                      <TouchableOpacity style={{justifyContent:'center', alignItems:'center', position:'relative', top:-10}}>
+                          <Image source={contact_num} style={{resizeMode:'contain', width:wp((40/411.4*100).toString() + '%'), height:hp((40/683.4*100).toString() + '%')}}/>
+                      </TouchableOpacity>
                   </View>
-                </TouchableOpacity>
-              </View>
-              <View style={{paddingLeft:20, flexShrink:10}}>
-                <TouchableOpacity style={{flex:2, justifyContent:'flex-start', alignItems:'center'}}>
-                  <Image source={search} style={{marginBottom:10, marginRight:20 ,width:60, height:55}}/>
-                </TouchableOpacity>
-                <TouchableOpacity style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                  <Image source={contact_num} style={{marginBottom:10, marginRight:20 ,width:50, height:30}}/>
-                </TouchableOpacity>
-              </View>
-            </ImageBackground>
+              </ImageBackground>
           </View>
-
+          
           {/* Categories */}
           
-          <View style={styles.categories}>
+          <ScrollView style={{height:hp('79%')}}>
+          {/* <View style={styles.categories}>
             <FlatList 
               data={this.state.categories}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               renderItem={({item}) =>
-                <View style={styles.category}>
+                <View style={styles.category}> */}
                     {/* <TouchableOpacity style={{padding:0}}> */}
-                      <LocalImage source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/>
+                      {/* <LocalImage source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/> */}
                     {/* </TouchableOpacity> */}
-                    <View style={{backgroundColor:"#03507E", paddingHorizontal:2}}>
+                    {/* <View style={{backgroundColor:"#03507E", paddingHorizontal:2}}>
                       <Text style={styles.category_name}>{item.name}</Text>
                     </View>
                 </View>
@@ -122,9 +129,9 @@ class Home extends Component{
               keyExtractor={item => toString(item.name)}
               style={{flex:1}}
             /> 
-          </View>
-          <View style={styles.slider}>
-            <Swiper height={300}
+          </View> */}
+          <View style={hp('20%')}>
+            <Swiper height={hp('20%')}
             showsPagination={false}
             autoplay={true}> 
             {
@@ -135,7 +142,6 @@ class Home extends Component{
             }
             </Swiper>
           </View>
-          <ScrollView style={{height:"55%"}}>
           <View style={styles.selected_products}>
             <Text style={{
               color: 'white',
@@ -155,20 +161,20 @@ class Home extends Component{
                 <View>
                   
                   <View style={styles.product}>
-                      <View style={{flexDirection:"row", padding:2, justifyContent:'space-around'}}>
-                        <Icon style={{margin:5}} name="heart" size={20} color="red"/>
+                      <View style={{flexDirection:"row", padding:hp((2/683.4*100).toString() + '%'), justifyContent:'space-around'}}>
+                        <Icon style={{margin:5}} name="heart" size={wp('6%')} color="red"/>
                         <LocalImageBig source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/>
-                        <Icon style={{margin:5}} name="compress" size={20} color="black"/>
+                        <Icon style={{margin:5}} name="compress" size={wp('6%')} color="black"/>
                       </View>
-                      <View style={{textAlign: 'center', paddingHorizontal:2, alignItems:'center', justifyContent:'center' }}>
+                      <View style={{textAlign: 'center', paddingHorizontal:wp('1%'), alignItems:'center', justifyContent:'center' }}>
                         <Text style={styles.product_name}>{item.name}</Text>
                         <View style={{flexDirection:'row'}}>
                           <Text style={styles.product_price}>{item.price}</Text>
-                          <Text style={{color:'red', marginTop:13, fontWeight:"bold", fontSize:10}}>EGP</Text>
+                          <Text style={{color:'red', marginTop:hp((13/683.4*100).toString() + '%'), fontWeight:"bold", fontSize:wp('3%')}}>EGP</Text>
                         </View>
                       </View>
                       <TouchableOpacity style={styles.addToCart}>
-                        <Text style={{color:'white', fontSize:10}}> Add to Cart </Text><Icon name="shopping-cart" size={15} color="white"/>
+                        <Text style={{color:'white', fontSize:wp('3%')}}> Add to Cart </Text><Icon name="shopping-cart" size={wp('4%')} color="white"/>
                       </TouchableOpacity>
                   </View>
                 </View>
@@ -197,20 +203,20 @@ class Home extends Component{
                 <View>
                   
                   <View style={styles.product}>
-                      <View style={{flexDirection:"row", padding:2, justifyContent:'space-around'}}>
-                        <Icon style={{margin:5}} name="heart" size={20} color="red"/>
+                      <View style={{flexDirection:"row", padding:hp((2/683.4*100).toString() + '%'), justifyContent:'space-around'}}>
+                        <Icon style={{margin:5}} name="heart" size={wp('6%')} color="red"/>
                         <LocalImageBig source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/>
-                        <Icon style={{margin:5}} name="compress" size={20} color="black"/>
+                        <Icon style={{margin:5}} name="compress" size={wp('6%')} color="black"/>
                       </View>
-                      <View style={{textAlign: 'center', paddingHorizontal:2, alignItems:'center', justifyContent:'center' }}>
+                      <View style={{textAlign: 'center', paddingHorizontal:wp('1%'), alignItems:'center', justifyContent:'center' }}>
                         <Text style={styles.product_name}>{item.name}</Text>
                         <View style={{flexDirection:'row'}}>
                           <Text style={styles.product_price}>{item.price}</Text>
-                          <Text style={{color:'red', marginTop:13, fontWeight:"bold", fontSize:10}}>EGP</Text>
+                          <Text style={{color:'red', marginTop:hp((13/683.4*100).toString() + '%'), fontWeight:"bold", fontSize:wp('3%')}}>EGP</Text>
                         </View>
                       </View>
                       <TouchableOpacity style={styles.addToCart}>
-                        <Text style={{color:'white', fontSize:10}}> Add to Cart </Text><Icon name="shopping-cart" size={15} color="white"/>
+                        <Text style={{color:'white', fontSize:wp('3%')}}> Add to Cart </Text><Icon name="shopping-cart" size={wp('4%')} color="white"/>
                       </TouchableOpacity>
                   </View>
                 </View>
@@ -239,20 +245,20 @@ class Home extends Component{
                 <View>
                   
                   <View style={styles.product}>
-                      <View style={{flexDirection:"row", padding:2, justifyContent:'space-around'}}>
-                        <Icon style={{margin:5}} name="heart" size={20} color="red"/>
+                      <View style={{flexDirection:"row", padding:hp((2/683.4*100).toString() + '%'), justifyContent:'space-around'}}>
+                        <Icon style={{margin:5}} name="heart" size={wp('6%')} color="red"/>
                         <LocalImageBig source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/>
-                        <Icon style={{margin:5}} name="compress" size={20} color="black"/>
+                        <Icon style={{margin:5}} name="compress" size={wp('6%')} color="black"/>
                       </View>
-                      <View style={{textAlign: 'center', paddingHorizontal:2, alignItems:'center', justifyContent:'center' }}>
+                      <View style={{textAlign: 'center', paddingHorizontal:wp('1%'), alignItems:'center', justifyContent:'center' }}>
                         <Text style={styles.product_name}>{item.name}</Text>
                         <View style={{flexDirection:'row'}}>
                           <Text style={styles.product_price}>{item.price}</Text>
-                          <Text style={{color:'red', marginTop:13, fontWeight:"bold", fontSize:10}}>EGP</Text>
+                          <Text style={{color:'red', marginTop:hp((13/683.4*100).toString() + '%'), fontWeight:"bold", fontSize:wp('3%')}}>EGP</Text>
                         </View>
                       </View>
                       <TouchableOpacity style={styles.addToCart}>
-                        <Text style={{color:'white', fontSize:10}}> Add to Cart </Text><Icon name="shopping-cart" size={15} color="white"/>
+                        <Text style={{color:'white', fontSize:wp('3%')}}> Add to Cart </Text><Icon name="shopping-cart" size={wp('4%')} color="white"/>
                       </TouchableOpacity>
                   </View>
                 </View>
@@ -281,20 +287,20 @@ class Home extends Component{
                 <View>
                   
                   <View style={styles.product}>
-                      <View style={{flexDirection:"row", padding:2, justifyContent:'space-around'}}>
-                        <Icon style={{margin:5}} name="heart" size={20} color="red"/>
+                      <View style={{flexDirection:"row", padding:hp((2/683.4*100).toString() + '%'), justifyContent:'space-around'}}>
+                        <Icon style={{margin:5}} name="heart" size={wp('6%')} color="red"/>
                         <LocalImageBig source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/>
-                        <Icon style={{margin:5}} name="compress" size={20} color="black"/>
+                        <Icon style={{margin:5}} name="compress" size={wp('6%')} color="black"/>
                       </View>
-                      <View style={{textAlign: 'center', paddingHorizontal:2, alignItems:'center', justifyContent:'center' }}>
+                      <View style={{textAlign: 'center', paddingHorizontal:wp('1%'), alignItems:'center', justifyContent:'center' }}>
                         <Text style={styles.product_name}>{item.name}</Text>
                         <View style={{flexDirection:'row'}}>
                           <Text style={styles.product_price}>{item.price}</Text>
-                          <Text style={{color:'red', marginTop:13, fontWeight:"bold", fontSize:10}}>EGP</Text>
+                          <Text style={{color:'red', marginTop:hp((13/683.4*100).toString() + '%'), fontWeight:"bold", fontSize:wp('3%')}}>EGP</Text>
                         </View>
                       </View>
                       <TouchableOpacity style={styles.addToCart}>
-                        <Text style={{color:'white', fontSize:10}}> Add to Cart </Text><Icon name="shopping-cart" size={15} color="white"/>
+                        <Text style={{color:'white', fontSize:wp('3%')}}> Add to Cart </Text><Icon name="shopping-cart" size={wp('4%')} color="white"/>
                       </TouchableOpacity>
                   </View>
                 </View>
@@ -323,20 +329,20 @@ class Home extends Component{
                 <View>
                   
                   <View style={styles.product}>
-                      <View style={{flexDirection:"row", padding:2, justifyContent:'space-around'}}>
-                        <Icon style={{margin:5}} name="heart" size={20} color="red"/>
+                      <View style={{flexDirection:"row", padding:hp((2/683.4*100).toString() + '%'), justifyContent:'space-around'}}>
+                        <Icon style={{margin:5}} name="heart" size={wp('6%')} color="red"/>
                         <LocalImageBig source={item.image.src} originalWidth={item.image.width} originalHeight={item.image.height}/>
-                        <Icon style={{margin:5}} name="compress" size={20} color="black"/>
+                        <Icon style={{margin:5}} name="compress" size={wp('6%')} color="black"/>
                       </View>
-                      <View style={{textAlign: 'center', paddingHorizontal:2, alignItems:'center', justifyContent:'center' }}>
+                      <View style={{textAlign: 'center', paddingHorizontal:wp('1%'), alignItems:'center', justifyContent:'center' }}>
                         <Text style={styles.product_name}>{item.name}</Text>
                         <View style={{flexDirection:'row'}}>
                           <Text style={styles.product_price}>{item.price}</Text>
-                          <Text style={{color:'red', marginTop:13, fontWeight:"bold", fontSize:10}}>EGP</Text>
+                          <Text style={{color:'red', marginTop:hp((13/683.4*100).toString() + '%'), fontWeight:"bold", fontSize:wp('3%')}}>EGP</Text>
                         </View>
                       </View>
                       <TouchableOpacity style={styles.addToCart}>
-                        <Text style={{color:'white', fontSize:10}}> Add to Cart </Text><Icon name="shopping-cart" size={15} color="white"/>
+                        <Text style={{color:'white', fontSize:wp('3%')}}> Add to Cart </Text><Icon name="shopping-cart" size={wp('4%')} color="white"/>
                       </TouchableOpacity>
                   </View>
                 </View>
@@ -354,6 +360,12 @@ class Home extends Component{
                 <SponserImage source={sponser3} originalHeight={33} originalWidth={120}/>
                 <SponserImage source={sponser4} originalHeight={33} originalWidth={120}/>
                 <SponserImage source={sponser5} originalHeight={33} originalWidth={120}/>
+              </View>
+              <View style={{backgroundColor:'#04517F', height:hp((20/683.4*100).toString() + '%'), marginVertical:hp((1/683.4*100).toString() + '%')}}>
+                <View style={{flexDirection:'row'}}>
+                  {/* <Icon name="mail-bulk" size={10} color="white"/> */}
+                  <Text style={{color:'white', fontWeight:'bold'}}> contact us </Text>
+                </View>
               </View>
           </View>
       </View>
@@ -405,7 +417,7 @@ const styles = StyleSheet.create({
   },
 
   image_slider:{
-    width: DEVICE_WIDTH - 5,
+    width: wp('99%'),
   },
 
   category:{
@@ -426,7 +438,7 @@ const styles = StyleSheet.create({
   },
 
   product:{
-    width: DEVICE_WIDTH/2 - 4,
+    width: wp('40%'),
     alignItems:'center',
     justifyContent:'center',
     alignContent:'center',
@@ -442,6 +454,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     alignContent:'center',
+    height:hp('5%')
   },
   product_price:{
     color:"#03507E",

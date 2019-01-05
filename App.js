@@ -7,8 +7,28 @@ import { addPlace } from './app/actions/plac';
 import { sendMessage } from './app/actions/auth';
 import RootNavigator from './app/navigator/RootNavigator';
 import SplashScreen from './app/components/SplashScreen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  listenOrientationChange as lor,
+  removeOrientationListener as rol
+} from 'react-native-responsive-screen';
 
-import Home from './app/test/Home';
+import {Text} from 'react-native';
+
+// import Home from './app/test/Home';
+import Home from './app/components/Home';
+import Cart from './app/test/Cart';
+import Test from './app/test/test';
+import Checkout1 from './app/test/Checkout1';
+import Product from './app/test/Product';
+import Search from './app/test/Search';
+import Login from './app/test/Login';
+import Signup from './app/test/Signup';
+import Profile from './app/test/Profile';
+import EditProfile from './app/test/EditProfile';
+import OrderHistory from './app/test/OrderHistory';
+import Products from './app/components/Products';
 import Category from './app/components/Category';
 class App extends Component {
   
@@ -28,10 +48,20 @@ class App extends Component {
 
   render() {
     return (
-      // this.state.rootPage
-      // <Home />
+      this.state.rootPage
+      // <Search />
       // <SplashScreen/>
-      <Category />
+      // <Category />
+      // <EditProfile />
+      // <EditProfile />
+      // <Login />
+      // <OrderHistory />
+      // <Profile />
+      // <Cart />
+      // <OrderHistory />
+      // <Product />
+      // <Checkout1 />
+      // <Test/>
     )
   }
 }

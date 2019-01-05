@@ -11,6 +11,7 @@ import {
     ImageBackground,
     ScrollView,
     Image,
+    TextInput
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator } from 'react-navigation';
@@ -20,7 +21,14 @@ import Dimensions from 'Dimensions';
 import Swiper from 'react-native-swiper';
 import bgSrc from './images/wallpaper.png';
 import Product from './Product';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+    listenOrientationChange as lor,
+    removeOrientationListener as rol
+} from 'react-native-responsive-screen';
 
+import Products from '../components/Products';
 import header_bg from '../components/images/header_bg.jpg'
 import logo from '../components/images/CompuMe.png';
 import search from '../components/images/search.png';
@@ -39,7 +47,6 @@ import sponser5 from '../components/images/sponser5.png';
 
 
 
-const {width} = Dimensions.get('window')
 
 // original
 // const Slider = props => ( <View style={styles.imageContainer}>
@@ -139,21 +146,23 @@ class Category extends React.Component{
         
             var Data = this.state.subCategories.map( subCategory => 
                (<View style={styles.selected_products}>
-                <View style={{backgroundColor:'white', paddingHorizontal:1, height:20, justifyContent:'center'}}>
-                 <Text style={{
-                 color: 'white',
-                 backgroundColor:'#04517F',
-                 borderRadius:3,
-                 fontWeight:'bold',
-                 fontSize:12,
-                 justifyContent:'center',
-                 alignItems:'center',
-                 width:'20%',
-                 position:'absolute',
-                 right:-2,
-                 paddingHorizontal:10
-                 }}> More </Text>
-                 </View>
+                    <View style={{backgroundColor:'white', paddingHorizontal:1, height:20, justifyContent:'center'}}>
+                        {/* <TouchableOpacity  > */}
+                            <Text onPress={()=> this.props.navigation.navigate('Products')} style={{
+                            color: 'white',
+                            backgroundColor:'#04517F',
+                            borderRadius:3,
+                            fontWeight:'bold',
+                            fontSize:12,
+                            justifyContent:'center',
+                            alignItems:'center',
+                            width:'20%',
+                            position:'absolute',
+                            right:-2,
+                            paddingHorizontal:10
+                            }}> More </Text>
+                        {/* </TouchableOpacity> */}
+                    </View>
                  <FlatList 
                  data={subCategory.products}
                  // showsHorizontalScrollIndicator={true}
@@ -192,77 +201,81 @@ class Category extends React.Component{
             return(
                 <View style={{flex:1}}>
                     {/* Header */}
-                    <View style={styles.header}>
-                        <ImageBackground source={header_bg} style={styles.header_image_bg}>
-                        <Icon name="bars" size={25} color="white" onPress={()=>alert('drawer Open')}/>
-                        <Image source={logo} style={styles.logo}/>
-                        <View style={{paddingLeft:5}}>
-                            <TouchableOpacity>
-                            <View style={{flexDirection:'row', alignContent:'space-between'}}>
-                                <Icon name="shopping-cart" size={20} color="white"/>
-                                <Text style={{color:'white', padding:2, fontWeight:'bold'}}>My Cart</Text>
+                    <View style={{ height:hp('16%')}}>
+                        <ImageBackground source={header_bg} style={{flex:1, resizeMethod:"contain"}} >
+                            <View style={styles.header_image_bg}>
+                                <Icon name="arrow-left" size={wp('6%')} color="white" onPress={()=>this.props.navigation.navigate('Home')} style={{marginLeft:wp('1.8%')}}/>
+                                <Image source={logo} style={{ marginTop:wp('1%'), width:wp('59%'), height:hp('9%'), resizeMode:'contain' }}/>
+                                <View style={{paddingLeft:wp((5/411.4*100).toString() + '%')}}>
+                                    <TouchableOpacity>
+                                    <View style={{flexDirection:'row', alignContent:'space-between'}}>
+                                        <Icon name="shopping-cart" size={hp('5%')} color="white"/>
+                                    </View>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity>
-                            <View style={{flexDirection:'row', alignContent:'space-between'}}>
-                                <Icon name="compress" size={20} color="white"/>
-                                <Text style={{color:'white', padding:2, fontWeight:'bold'}}>Compare</Text>
+                            <View style={{margin:wp('2%'), justifyContent:'space-between', alignItems:'center', backgroundColor:'#F2F2F2', height:hp('6%'), width:wp('96%'), borderRadius:wp('2%'), flexDirection:'row'}}>
+                                <TextInput
+                                    style={{backgroundColor:'#D2D2D2', paddingLeft:wp('2%'), width:wp('86'), borderTopLeftRadius:wp('2%'), borderBottomLeftRadius:wp('2%') , height:hp('6%'), fontSize:wp('4.1%'), color:'white'}}
+                                    placeholder="Search Products"
+                                    // secureTextEntry={this.props.secureTextEntry}
+                                    autoCorrect={false}
+                                    returnKeyType="next"
+                                    ref="Search Products"
+                                    // onSubmitEditing={}
+                                    placeholderTextColor="white"
+                                    underlineColorAndroid="transparent"
+                                    // onChangeText={this.props.passText}
+                                    
+                                />
+                                <TouchableOpacity  onPress={()=>this.props.navigation.navigate('Search')} style={{marginRight:wp('2%')}}><Icon name='search' size={wp('7%')} color="black" /></TouchableOpacity>
                             </View>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{paddingLeft:20, flexShrink:10}}>
-                            <TouchableOpacity style={{flex:2, justifyContent:'flex-start', alignItems:'center'}}>
-                            <Image source={search} style={{marginBottom:10, marginRight:20 ,width:60, height:55}}/>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                            <Image source={contact_num} style={{marginBottom:10, marginRight:20 ,width:50, height:30}}/>
-                            </TouchableOpacity>
-                        </View>
                         </ImageBackground>
                     </View>
-                    <View style={{flex:4}}>
-                        
-                        <Swiper 
-                            // showsPagination={false}
-                            // autoplay={true}
-                            dotStyle={{width:50, height:1, color:'white'}}
-                            dotColor="white"
-                            activeDotStyle={{width:50, height:1, color:'white'}}
-                            activeDotColor="#6D6D6F"
-                            paginationStyle={{position:'absolute', bottom:2,right:160}}
-                            > 
-                            {
-                                this.state.imagesSlider.map((item, i) => <Slider 
-                                    uri={item}
-                                    key={i}
-                                />)
-                            }
-                        </Swiper>
-                        <View style={{
-                                backgroundColor:'#033F63', 
-                                position:'absolute', 
-                                top:0,
-                                left:-2,
-                                borderRadius:5,
-                                paddingVertical:2,
-                                paddingLeft:10,
-                                paddingRight:4,
-                                marginTop:5,
-                                flexDirection:'row',
-                                justifyContent:'space-between',
-                                minWidth:100,
-                            }}>
-                                <Text style={{color:'white', fontWeight:'800'}}>
-                                    Communications
-                                </Text>
-                                <LocalImageCategoryIcon source={cat2_image} originalWidth={2400} originalHeight={3500} />
-                        </View>
-
-                    </View>
-
                     {/* body sub category */}
                     <View style={{flex:10, marginTop:3}}>
                         <ScrollView>
+                        <View style={{height:hp('20%')}}>
+                                        
+                            <Swiper 
+                                // showsPagination={false}
+                                // autoplay={true}
+                                dotStyle={{width:50, height:1, color:'white'}}
+                                dotColor="white"
+                                activeDotStyle={{width:50, height:1, color:'white'}}
+                                activeDotColor="#6D6D6F"
+                                paginationStyle={{position:'absolute', bottom:2,right:160}}
+                                > 
+                                {
+                                    this.state.imagesSlider.map((item, i) => <Slider 
+                                        uri={item}
+                                        key={i}
+                                    />)
+                                }
+                            </Swiper>
+                            <View style={{
+                                    backgroundColor:'#033F63', 
+                                    position:'absolute', 
+                                    top:0,
+                                    left:-2,
+                                    borderRadius:5,
+                                    paddingVertical:2,
+                                    paddingLeft:10,
+                                    paddingRight:4,
+                                    marginTop:5,
+                                    flexDirection:'row',
+                                    justifyContent:'space-between',
+                                    minWidth:100,
+                                }}>
+                                    <Text style={{color:'white', fontWeight:'800'}}>
+                                        Communications
+                                    </Text>
+                                    <LocalImageCategoryIcon source={cat2_image} originalWidth={2400} originalHeight={3500} />
+                            </View>
+
+                        </View>
+
+                        
                             {Data}
                         </ScrollView>
                     </View>
@@ -346,10 +359,10 @@ const CatNav = createStackNavigator({
             title:"Category", 
         }
     },
-    Product: {
-        screen: Product,
+    Products: {
+        screen: Products,
         navigationOption:{
-            title:"Product", 
+            title:"Products", 
         }
     }
 },

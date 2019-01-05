@@ -10,9 +10,13 @@ import {Text} from 'react-native';
 
 import Home from '../components/Home';
 import Category from '../components/Category';
+import Product from '../test/Product';
+import Cart from '../components/Cart';
 import ContentComponent from '../components/ContentComponent';
 import AuthNavigator from './AuthNavigator';
+import UserNavigator from './UserNavigator';
 import AuthHome from '../components/auth/AuthHome';
+import Search from '../test/Search';
 
 export const middleware = createReactNavigationReduxMiddleware(
     "root",
@@ -29,9 +33,33 @@ export const RootNavigator = createDrawerNavigator(
             }
         },
         Category: {
-            screen: AuthHome,
+            screen: Category,
             navigationOption:{
                 title:"Category", 
+            }
+        },
+        Product: {
+            screen: Product,
+            navigationOption:{
+                title:"Product", 
+            }
+        },
+        Cart: {
+            screen: Cart,
+            navigationOption:{
+                title:"Cart", 
+            }
+        },
+        Search: {
+            screen: Search,
+            navigationOption:{
+                title:"Search", 
+            }
+        },
+        UserNavigator: {
+            screen: UserNavigator,
+            navigationOption:{
+                title:"UserNavigator", 
             }
         },
         AuthNavigator: {
