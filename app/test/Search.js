@@ -13,7 +13,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Swiper from 'react-native-swiper';
 import Dimensions from 'Dimensions';
-
+import Localization from '../localization/localization';
 import header_bg from '../components/images/header_bg.jpg'
 import logo from '../components/images/CompuMe.png';
 import search from '../components/images/search.png';
@@ -112,7 +112,7 @@ class Search extends Component{
                           // secureTextEntry={this.props.secureTextEntry}
                           autoCorrect={false}
                           returnKeyType="next"
-                          ref="Search Products"
+                          ref={Localization.searchProducts}
                           // onSubmitEditing={}
                           placeholderTextColor="#C4C4C4"
                           underlineColorAndroid="transparent"
@@ -123,9 +123,9 @@ class Search extends Component{
                       <TouchableOpacity style={{marginRight:wp('2%')}}><Icon name='arrow-right' size={wp('5%')} color="white" /></TouchableOpacity>
                     </View>
                     <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                      <Text style={{color:'#EAEBEF', fontSize:wp('3.8%')}}> Recent searches </Text>
+                      <Text style={{color:'#EAEBEF', fontSize:wp('3.8%')}}> {Localization.recentSearch} </Text>
                       <TouchableOpacity>
-                        <Text style={{color:'#EAEBEF', fontSize:wp('3.8%')}}> clear all </Text>
+                        <Text style={{color:'#EAEBEF', fontSize:wp('3.8%')}}> {Localization.clearAll} </Text>
                       </TouchableOpacity>
                     </View>
                     <Flat/>
@@ -158,7 +158,7 @@ class Search extends Component{
                         autoCorrect={false}
                         returnKeyType="next"
                         ref="Search_Products"
-                        placeholder="Search Products"
+                        placeholder={Localization.searchProducts}
                         placeholderTextColor="#C4C4C4"
                         underlineColorAndroid="transparent"
                         onChangeText={(text)=>this.setState({search_text:text, history:false})}
@@ -167,9 +167,9 @@ class Search extends Component{
                     <TouchableOpacity style={{marginRight:wp('2%')}} onPress={()=>this.setState({search_text:''})}><Icon name='times' size={wp('5%')} color="white" /></TouchableOpacity>
                   </View>
                   <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                    <Text style={{color:'#EAEBEF', fontSize:wp('3.8%')}}> Recent searches </Text>
+                    <Text style={{color:'#EAEBEF', fontSize:wp('3.8%')}}> {Localization.recentSearch} </Text>
                     <TouchableOpacity>
-                      <Text style={{color:'#EAEBEF', fontSize:wp('3.8%')}}> clear all </Text>
+                      <Text style={{color:'#EAEBEF', fontSize:wp('3.8%')}}> {Localization.clearAll} </Text>
                     </TouchableOpacity>
                   </View>
                   <Flat/>

@@ -16,6 +16,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator } from 'react-navigation';
 import { Header } from 'react-native-elements';
+import Localization from '../../localization/localization';
 import axios from 'axios';
 import Dimensions from 'Dimensions';
 import Swiper from 'react-native-swiper';
@@ -94,14 +95,14 @@ class Login extends Component{
                 <Image source={logo} resizeMode="contain" style={{width:wp('69%'), height:hp('10.8%'), position:'absolute', top:hp('6%'), left:wp('16%')}}/>
                 <View style={{paddingHorizontal:wp('2%'), height:hp('32%'), marginTop: hp('16%')}}>
                     <View style={{flexDirection:'row'}} >
-                        <Text style={{fontWeight:'300', fontSize:26, color:'black'}} >Log in</Text>
+                        <Text style={{fontWeight:'300', fontSize:26, color:'black'}} >{Localization.login}</Text>
                         <Image source={user} style={{width:DW/8.5, height:DW/8.5, position:'relative', left:0}}/>
                     </View>
 
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', width:wp('84%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('11%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                            placeholder="First Name"
+                            placeholder={Localization.firstName}
                             autoCorrect={false}
                             returnKeyType="next"
                             ref="First Name"
@@ -116,7 +117,7 @@ class Login extends Component{
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', width:wp('84%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('11%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                            placeholder="Second Name"
+                            placeholder={Localization.secondName}
                             autoCorrect={false}
                             returnKeyType="next"
                             ref="Second Name"
@@ -147,7 +148,7 @@ class Login extends Component{
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', width:wp('84%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('11%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                            placeholder="phone"
+                            placeholder={Localization.phone}
                             autoCorrect={false}
                             returnKeyType="next"
                             ref="phone"
@@ -162,7 +163,7 @@ class Login extends Component{
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', width:wp('84%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('11%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                            placeholder="E-mail"
+                            placeholder={Localization.email}
                             autoCorrect={false}
                             returnKeyType="next"
                             ref="E-mail"
@@ -176,7 +177,7 @@ class Login extends Component{
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', width:wp('84%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('11%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                            placeholder="Password"
+                            placeholder={Localization.password}
                             autoCorrect={false}
                             returnKeyType="next"
                             ref="Password"
@@ -190,7 +191,7 @@ class Login extends Component{
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', width:wp('84%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('11%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                            placeholder="Confirm-Password"
+                            placeholder={Localization.confirm_Password}
                             autoCorrect={false}
                             returnKeyType="next"
                             ref="Confirm-Password"
@@ -205,7 +206,7 @@ class Login extends Component{
                         <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                             <TextInput
                                 style={{backgroundColor:'#D2D2D2', width:wp('32%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('12%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                                placeholder="country"
+                                placeholder={Localization.country}
                                     autoCorrect={false}
                                 returnKeyType="next"
                                 ref="country"
@@ -220,7 +221,7 @@ class Login extends Component{
                         <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                             <TextInput
                                 style={{backgroundColor:'#D2D2D2', width:wp('32%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('20%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                                placeholder="city"
+                                placeholder={Loca.city}
                                     autoCorrect={false}
                                 returnKeyType="next"
                                 ref="city"
@@ -236,7 +237,7 @@ class Login extends Component{
                     <View style={{justifyContent:'center', alignItems:'center', marginTop:hp('0.4%')}}>
                         <TouchableOpacity style={{backgroundColor:'#03426D', borderRadius:3, width:wp('40%'), padding:4, flexDirection:'row', justifyContent:'center'}}>
                             <Icon name='sign-in'  size={25} color='white'/>
-                            <Text style={{color:'white', fontWeight:'bold', fontSize:18}}> sign up </Text>
+                            <Text style={{color:'white', fontWeight:'bold', fontSize:18}}> {Localization.signup} </Text>
                         </TouchableOpacity>
                     </View>
                 </View>

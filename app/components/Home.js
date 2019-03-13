@@ -13,7 +13,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Swiper from 'react-native-swiper';
 import Dimensions from 'Dimensions';
-
+import Localization from '../localization/localization';
 import header_bg from '../components/images/header_bg.jpg'
 import logo from '../components/images/CompuMe.png';
 import search from '../components/images/search.png';
@@ -91,7 +91,7 @@ class Home extends Component{
                   <View style={{margin:wp('2%'), justifyContent:'space-between', alignItems:'center', backgroundColor:'#F2F2F2', height:hp('6%'), width:wp('96%'), borderRadius:wp('2%'), flexDirection:'row'}}>
                     <TextInput
                         style={{backgroundColor:'#D2D2D2', paddingLeft:wp('2%'), width:wp('86'), borderTopLeftRadius:wp('2%'), borderBottomLeftRadius:wp('2%') , height:hp('6%'), fontSize:wp('4.1%'), color:'white'}}
-                        placeholder="Search Products"
+                        placeholder={Localization.searchProducts}
                         // secureTextEntry={this.props.secureTextEntry}
                         autoCorrect={false}
                         returnKeyType="next"
@@ -132,7 +132,7 @@ class Home extends Component{
               justifyContent:'space-around',
               alignItems:'center',
               marginRight:"60%",
-            }}> Shop By Category </Text>
+            }}> {Localization.shopByCategory} </Text>
             <FlatList 
               data={this.state.categories}
               renderItem={({item}) =>
@@ -171,7 +171,7 @@ class Home extends Component{
               justifyContent:'space-around',
               alignItems:'center',
               marginRight:"60%",
-            }}> Best Products </Text>
+            }}> {Localization.bestProducts} </Text>
             <FlatList 
               data={this.state.products}
               renderItem={({item}) =>
@@ -193,7 +193,7 @@ class Home extends Component{
                         </View>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.addToCart}>
-                        <Text style={{color:'white', fontSize:wp('3%')}}> Add to Cart </Text><Icon name="shopping-cart" size={wp('4%')} color="white"/>
+                        <Text style={{color:'white', fontSize:wp('3%')}}> {Localization.addToCart} </Text><Icon name="shopping-cart" size={wp('4%')} color="white"/>
                       </TouchableOpacity>
                   </View>
                 </View>
@@ -214,7 +214,7 @@ class Home extends Component{
               <View style={{backgroundColor:'#04517F', height:hp((20/683.4*100).toString() + '%'), marginVertical:hp((1/683.4*100).toString() + '%')}}>
                 <View style={{flexDirection:'row'}}>
                   {/* <Icon name="mail-bulk" size={10} color="white"/> */}
-                  <Text style={{color:'white', fontWeight:'bold'}}> contact us {wp('40%')} </Text>
+                  <Text style={{color:'white', fontWeight:'bold'}}> {Localization.contactUs} {wp('40%')} </Text>
                 </View>
               </View>
           </View>

@@ -18,6 +18,8 @@ import {
   Icon,
 } from 'react-native-elements';
 import axios from 'axios';
+import Localization from '../../localization/localization';
+
 import bgSrc from '../images/wallpaper.png';
 import logoImg from '../images/logo.png';
 import usernameImg from '../images/username.png';

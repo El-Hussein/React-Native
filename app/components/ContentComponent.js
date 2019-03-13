@@ -10,7 +10,7 @@ import {
   listenOrientationChange as lor,
   removeOrientationListener as rol
 } from 'react-native-responsive-screen';
-
+import Localization from '../localization/localization';
 import { LocalImageProfile, LocalImageMenuCategory } from './LocalImage';
 
 import login_bg from '../components/images/login_bg.png';
@@ -40,11 +40,11 @@ class ContentComponent extends Component{
         user: {name:'hi', user:{photo:login_bg}},
         updated: false,
         categories: [
-          {image:{src: cat1_image, width:2480, height:3508}, name:"Offers"},
-          {image:{src: cat2_image, width:2480, height:3508}, name:"Orange"},
-          {image:{src: cat1_image, width:2480, height:3508}, name:"computer"},
-          {image:{src: cat3_image, width:200, height:200}, name:"electronics"},
-          {image:{src: cat2_image, width:2480, height:3508}, name:"comunications"},
+          {image:{src: cat1_image, width:2480, height:3508}, name:Localization.offers},
+          {image:{src: cat2_image, width:2480, height:3508}, name:Localization.orange},
+          {image:{src: cat1_image, width:2480, height:3508}, name:Localization.computer},
+          {image:{src: cat3_image, width:200, height:200}, name:Localization.electronics},
+          {image:{src: cat2_image, width:2480, height:3508}, name:Localization.comunications},
         ],
       }
       this._signIn = this._signIn.bind(this);
@@ -135,7 +135,7 @@ class ContentComponent extends Component{
               <View style={{flex:2}}>
                   <ImageBackground source={login_bg} style={{ flex:1, justifyContent:'center', alignItems:'center'}}>
                     <LocalImageProfile source={username} originalWidth={48} originalHeight={48}/>
-                    <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> Welcome </Text>
+                    <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> {Localization.welcome} </Text>
                     <TouchableOpacity onPress={()=>this.props.navigation.navigate('UserNavigator')}>
                       <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> Hussein </Text>
                     </TouchableOpacity>
@@ -162,21 +162,21 @@ class ContentComponent extends Component{
                 <View style={{flexDirection:'row', marginLeft:wp("5%")}}>
                   <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                     <Icon name="user-circle" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
-                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> My Account </Text>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.myAccount} </Text>
                   </View>
                   <View style={{marginLeft:wp("5%"), flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                     <Icon name="file" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
-                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> New Feed </Text>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.newFeed} </Text>
                   </View>
                 </View>
                 <View style={{flexDirection:'row', marginLeft:"5%"}}>
                   <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                     <Icon name="heart" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
-                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> My WishList </Text>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.myWishList} </Text>
                   </View>
                   <View style={{marginLeft:"5%", flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                     <Icon name="undo" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
-                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> Return Policy </Text>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.returnPolicy} </Text>
                   </View>
                 </View>
               </View>
@@ -195,9 +195,9 @@ class ContentComponent extends Component{
               <View style={{flex:2}}>
                   <ImageBackground source={login_bg} style={{ flex:1, justifyContent:'center', alignItems:'center'}}>
                     <LocalImageProfile source={username} originalWidth={48} originalHeight={48}/>
-                    <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> Welcome </Text>
+                    <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> {Localization.welcome} </Text>
                     <TouchableOpacity onPress={()=>this.props.navigation.navigate('AuthNavigator')}>
-                      <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> Log in / Sign up </Text>
+                      <Text style={{color:'white', opacity:0.9, fontSize:wp('7%'), fontWeight:'bold'}}> {Localization.loginSignup} </Text>
                     </TouchableOpacity>
                   </ImageBackground>
               </View>
@@ -222,21 +222,21 @@ class ContentComponent extends Component{
                 <View style={{flexDirection:'row', marginLeft:wp("5%")}}>
                   <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                     <Icon name="user-circle" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
-                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> My Account </Text>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.myAccount} </Text>
                   </View>
                   <View style={{marginLeft:wp("5%"), flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                     <Icon name="file" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
-                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> New Feed </Text>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.newFeed} </Text>
                   </View>
                 </View>
                 <View style={{flexDirection:'row', marginLeft:"5%"}}>
                   <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                     <Icon name="heart" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
-                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> My WishList </Text>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.myWishList} </Text>
                   </View>
                   <View style={{marginLeft:"5%", flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                     <Icon name="undo" size={wp(((20)/411.4*100).toString() + '%')} color='white'/>
-                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> Return Policy </Text>
+                    <Text style={{color:'white', fontSize:wp('4.3%'), margin:wp(((7)/411.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.returnPolicy} </Text>
                   </View>
                 </View>
               </View>
@@ -257,7 +257,7 @@ class ContentComponent extends Component{
                   navigate('AuthNavigator');
                 }
               }>
-                <Text> Login / register </Text> 
+                <Text> {Localization.loginSignup} </Text> 
               </TouchableOpacity>
             </View>
             <SafeAreaView style={styles.container}>
@@ -312,7 +312,7 @@ class ContentComponent extends Component{
                 }
               }
               activeOpacity={1}>
-              <Text> logout </Text>
+              <Text> {Localization.logout} </Text>
             </TouchableOpacity>
             </View>
             <SafeAreaView style={styles.container}>

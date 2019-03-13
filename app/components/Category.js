@@ -19,8 +19,6 @@ import { Header } from 'react-native-elements';
 import axios from 'axios';
 import Dimensions from 'Dimensions';
 import Swiper from 'react-native-swiper';
-import bgSrc from './images/wallpaper.png';
-import Product from './Product';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
@@ -44,6 +42,7 @@ import sponser2 from '../components/images/sponser2.png';
 import sponser3 from '../components/images/sponser3.png';
 import sponser4 from '../components/images/sponser4.png';
 import sponser5 from '../components/images/sponser5.png';
+import Localization from '../localization/localization';
 
 
 
@@ -160,7 +159,7 @@ class Category extends React.Component{
                             position:'absolute',
                             right:-2,
                             paddingHorizontal:10
-                            }}> More </Text>
+                            }}> {Localization.more} </Text>
                         {/* </TouchableOpacity> */}
                     </View>
                  <FlatList 
@@ -217,7 +216,7 @@ class Category extends React.Component{
                             <View style={{margin:wp('2%'), justifyContent:'space-between', alignItems:'center', backgroundColor:'#F2F2F2', height:hp('6%'), width:wp('96%'), borderRadius:wp('2%'), flexDirection:'row'}}>
                                 <TextInput
                                     style={{backgroundColor:'#D2D2D2', paddingLeft:wp('2%'), width:wp('86'), borderTopLeftRadius:wp('2%'), borderBottomLeftRadius:wp('2%') , height:hp('6%'), fontSize:wp('4.1%'), color:'white'}}
-                                    placeholder="Search Products"
+                                    placeholder={Localization.searchProduct}
                                     // secureTextEntry={this.props.secureTextEntry}
                                     autoCorrect={false}
                                     returnKeyType="next"
@@ -268,7 +267,7 @@ class Category extends React.Component{
                                     minWidth:100,
                                 }}>
                                     <Text style={{color:'white', fontWeight:'800'}}>
-                                        Communications
+                                        {Localization.communications}
                                     </Text>
                                     <LocalImageCategoryIcon source={cat2_image} originalWidth={2400} originalHeight={3500} />
                             </View>
@@ -286,7 +285,7 @@ class Category extends React.Component{
             return(
                 <View style={styles.loaderContainer}>
                 <Text>
-                    this is Category Page.
+                    {Localization.thisIsCategoryPage}
                 </Text>
                 <ActivityIndicator/>
                 </View>

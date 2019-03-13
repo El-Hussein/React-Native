@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator } from 'react-navigation';
+import Localization from '../localization/localization';
+
 import { Header } from 'react-native-elements';
 import axios from 'axios';
 import Dimensions from 'Dimensions';
@@ -97,7 +99,7 @@ class OrderHistory extends Component{
                         <View onPress={()=>this.props.navigation.navigate('Search')} style={{margin:wp('2%'), justifyContent:'space-between', alignItems:'center', backgroundColor:'#F2F2F2', height:hp('6%'), width:wp('96%'), borderRadius:wp('2%'), flexDirection:'row'}}>
                             <TextInput
                                 style={{backgroundColor:'#D2D2D2', paddingLeft:wp('2%'), width:wp('86'), borderTopLeftRadius:wp('2%'), borderBottomLeftRadius:wp('2%') , height:hp('6%'), fontSize:wp('4.1%'), color:'white'}}
-                                placeholder="Search Products"
+                                placeholder={Localization.searchProduct}
                                 // secureTextEntry={this.props.secureTextEntry}
                                 autoCorrect={false}
                                 returnKeyType="next"
@@ -113,7 +115,7 @@ class OrderHistory extends Component{
                 </View>
                 <View style={{height:wp('8%'), justifyContent:'center', alignItems:'center'}}>
                     <View style={{backgroundColor:'#0A5481', borderRadius:wp('1%'), padding:wp('1%'), position:'absolute', top:wp('1%'), left:wp('-1%')}}>
-                        <Text style={{fontSize:wp('3%'), color:'white', fontWeight:'bold'}}>  orders history </Text>
+                        <Text style={{fontSize:wp('3%'), color:'white', fontWeight:'bold'}}>  {Localization.orderHistory} </Text>
                     </View>
                 </View>
                 <FlatList
@@ -171,28 +173,28 @@ class OrderHistory extends Component{
                         <View style={{borderWidth:wp('0.3%'), backgroundColor:'white', marginHorizontal:wp('2%'), marginVertical:wp('1%'), borderColor:'gray', height:hp('34%')}}>
                             <View style={{flexDirection:'row', justifyContent:'space-between', paddingHorizontal:wp('2%'), paddingVertical:wp('1%')}}>
                                 <View style={{alignItems:'center', justifyContent:'center'}}>
-                                    <Text style={{color:'#0A5481', fontSize:wp('2.5%'), textAlign:'center'}}>SHIPMENT NO.</Text>
+                                    <Text style={{color:'#0A5481', fontSize:wp('2.5%'), textAlign:'center'}}>{Localization.SHIPMENTNO}</Text>
                                     <Text style={{color:'#0A5481', fontSize:wp('2.5%'), textAlign:'center'}}>{item.id}</Text>
                                 </View>
                                 <View style={{alignItems:'center', justifyContent:'center'}}>
-                                    <Text style={{color:'#0A5481', fontSize:wp('2.5%'), textAlign:'center'}}>ORDER DATE</Text>
+                                    <Text style={{color:'#0A5481', fontSize:wp('2.5%'), textAlign:'center'}}>{Localization.ORDERDATE}</Text>
                                     <Text style={{color:'#0A5481', fontSize:wp('2.5%'), textAlign:'center'}}>{item.date}</Text>
                                 </View>
-                                <Text style={{color:'#0A5481', fontSize:wp('2.5%'), textAlign:'center'}}>TRACK SHIPMENT</Text>
+                                <Text style={{color:'#0A5481', fontSize:wp('2.5%'), textAlign:'center'}}>{Localization.TRACKSHIPMENT}</Text>
                             </View>
 
                             <View style={{flexDirection:'row'}}>
                                 <Bar/>
                             </View>
                             <View style={{flexDirection:'row', justifyContent:'space-between', paddingHorizontal:wp('2%'), paddingVertical:wp('1%')}}>
-                                <Text style={{color:'#0A5481', fontSize:wp('2%')}}>inprocessing</Text>
-                                <Text style={{color:'#0A5481', fontSize:wp('2%')}}>shipped</Text>
-                                <Text style={{color:'#0A5481', fontSize:wp('2%')}}>delivered</Text>
+                                <Text style={{color:'#0A5481', fontSize:wp('2%')}}>{Localization.inprocessing}</Text>
+                                <Text style={{color:'#0A5481', fontSize:wp('2%')}}>{Localization.shipped}</Text>
+                                <Text style={{color:'#0A5481', fontSize:wp('2%')}}>{Localization.delivered}</Text>
                             </View>
 
                             <View style={{flexDirection:'row'}}>
                                 <Image style={{width:wp('10%'), height:hp('3%'), resizeMode:'contain'}} source={car}/>
-                                <Text  style={{color:'#0A5481', fontSize:wp('3%')}}> Expected delivery {item.delivery} </Text>
+                                <Text  style={{color:'#0A5481', fontSize:wp('3%')}}> {Localization.expectedDelivery} {item.delivery} </Text>
                             </View>
 
                             <View style={{flexDirection:'row', opacity:0.5, width:wp('93%'), color:'gray', marginHorizontal:wp('1%'), borderWidth:wp('0.1%')}}>
@@ -203,7 +205,7 @@ class OrderHistory extends Component{
                                 <Image style={{width:wp('20%'), marginLeft:wp('1%'), marginTop:wp('1%'), height:hp('14%'), resizeMode:'contain'}} source={mob2}/>
                                 <View style={{justifyContent:'space-evenly', marginLeft:wp('4%')}}>
                                     <Text style={{fontWeight:'bold', color:'#0A5481', fontSize:wp('3.5%')}}> {item.name} </Text>
-                                    <Text style={{fontWeight:'bold', color:'#D2D2D2', fontSize:wp('2%')}}> status </Text>
+                                    <Text style={{fontWeight:'bold', color:'#D2D2D2', fontSize:wp('2%')}}> {Localization.status} </Text>
                                     <View style={{flexDirection:'row'}}>
                                         <Text style={{fontWeight:'bold', color:'#0C960B', fontSize:wp('3.5%')}}> {item.status} </Text>
                                         <Icon name="check-circle" size={wp('4%')} color="#0C960B" />
@@ -216,7 +218,7 @@ class OrderHistory extends Component{
                             </View>
 
                             <View style={{flexDirection:'row', justifyContent:'flex-end', width:wp('94%'), color:'gray', marginHorizontal:wp('1%')}}>
-                                <Text style={{color:'#0A5481', fontWeight:'bold', fontSize:wp('3%')}}> Viow Order Details </Text>
+                                <Text style={{color:'#0A5481', fontWeight:'bold', fontSize:wp('3%')}}> {Localization.viewOrderDetails} </Text>
                             </View>
 
                         </View>

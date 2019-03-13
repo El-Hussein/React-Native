@@ -13,6 +13,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Swiper from 'react-native-swiper';
 import Dimensions from 'Dimensions';
+import Localization from '../localization/localization';
 
 import header_bg from '../components/images/header_bg.jpg'
 import logo from '../components/images/CompuMe.png';
@@ -97,7 +98,7 @@ class Cart extends Component{
                     <View style={{margin:wp('2%'), justifyContent:'space-between', alignItems:'center', backgroundColor:'#F2F2F2', height:hp('6%'), width:wp('96%'), borderRadius:wp('2%'), flexDirection:'row'}}>
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', paddingLeft:wp('2%'), width:wp('86'), borderTopLeftRadius:wp('2%'), borderBottomLeftRadius:wp('2%') , height:hp('6%'), fontSize:wp('4.1%'), color:'white'}}
-                            placeholder="Search Products"
+                            placeholder={Localization.searchProducts}
                             // secureTextEntry={this.props.secureTextEntry}
                             autoCorrect={false}
                             returnKeyType="next"
@@ -166,12 +167,12 @@ class Cart extends Component{
                 </View>
                 <View>
                     <View style={{flexDirection:'row', height:hp('5%'), justifyContent:'space-between', marginHorizontal:wp("2%")}}>
-                        <Text style={{color:"black", fontSize:wp('5%'), fontWeight:"bold"}}> Total </Text>
+                        <Text style={{color:"black", fontSize:wp('5%'), fontWeight:"bold"}}> {Localization.total} </Text>
                         <Text style={{color:"red", fontSize:wp('5%'), fontWeight:"bold"}}> {this.state.total} </Text>
                     </View>
                     <View style={{marginHorizontal:wp('2%')}}>
                         <TouchableOpacity style={{borderRadius:wp('1.5%'), backgroundColor:'#03507E', justifyContent:'center', alignItems:'center', padding:wp('1%')}}>
-                            <Text style={{color:'white', fontWeight:'bold', fontSize:wp('5%')}}> Complete your order </Text>
+                            <Text style={{color:'white', fontWeight:'bold', fontSize:wp('5%')}}> {Localization.completeYourOrder} </Text>
                         </TouchableOpacity>
                     </View>
                 </View>

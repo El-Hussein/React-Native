@@ -28,7 +28,7 @@ export const RootNavigator = createDrawerNavigator(
         Home: {
             screen: Home,
             navigationOption:{
-                title:"hhhh",
+                title:"home",
                 header: null, 
             }
         },

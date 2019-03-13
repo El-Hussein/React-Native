@@ -11,7 +11,7 @@ TextInput,
 ScrollView,
 Picker,
 } from 'react-native';
-
+import Localization from '../../localization/localization';
 import axios from 'axios';
 import bgSrc from '../images/wallpaper.png';
 import logoImg from '../images/logo.png';
@@ -132,7 +132,7 @@ render() {
 
             <UserInput
             source={usernameImg}
-            placeholder="Email"
+            placeholder={Localization.email}
             autoCapitalize={'none'}
             returnKeyType={'next'}
             autoCorrect={false}
@@ -143,7 +143,7 @@ render() {
 
             <UserInput
             source={usernameImg}
-            placeholder="telephone"
+            placeholder={Localization.phone}
             autoCapitalize={'none'}
             returnKeyType={'next'}
             autoCorrect={false}
@@ -155,7 +155,7 @@ render() {
             <UserInput
             source={passwordImg}
             secureTextEntry={this.state.showPass}
-            placeholder="New Password"
+            placeholder={Localization.newPassword}
             returnKeyType={'go'}
             autoCapitalize={'none'}
             autoCorrect={false}
@@ -173,7 +173,7 @@ render() {
             <UserInput
             source={passwordImg}
             secureTextEntry={this.state.showPass2}
-            placeholder="Confirm Password"
+            placeholder={Localization.confirm_Password}
             returnKeyType={'go'}
             autoCapitalize={'none'}
             autoCorrect={false}

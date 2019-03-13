@@ -14,8 +14,7 @@ import {
     TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { createStackNavigator } from 'react-navigation';
-import { Header } from 'react-native-elements';
+import Localization from '../localization/localization';
 import axios from 'axios';
 import Dimensions from 'Dimensions';
 import Swiper from 'react-native-swiper';
@@ -104,7 +103,7 @@ class Product extends Component{
                             <View onPress={()=>this.props.navigation.navigate('Search')} style={{margin:wp('2%'), justifyContent:'space-between', alignItems:'center', backgroundColor:'#F2F2F2', height:hp('6%'), width:wp('96%'), borderRadius:wp('2%'), flexDirection:'row'}}>
                             <TextInput
                                 style={{backgroundColor:'#D2D2D2', paddingLeft:wp('2%'), width:wp('86'), borderTopLeftRadius:wp('2%'), borderBottomLeftRadius:wp('2%') , height:hp('6%'), fontSize:wp('4.1%'), color:'white'}}
-                                placeholder="Search Products"
+                                placeholder={Localization.searchProducts}
                                 // secureTextEntry={this.props.secureTextEntry}
                                 autoCorrect={false}
                                 returnKeyType="next"
@@ -153,18 +152,18 @@ class Product extends Component{
                                 <View style={{flexDirection:'row', width:wp('64%')}}>
                                     <View>
                                         <View style={{flexDirection:'row', alignItems:'center',}}>
-                                            <Text style={{fontSize:hp((15/683.4*100).toString() + '%'), fontWeight:'800', color:'#083D5C',  textAlign:'left'}}> Brand: </Text>
+                                            <Text style={{fontSize:hp((15/683.4*100).toString() + '%'), fontWeight:'800', color:'#083D5C',  textAlign:'left'}}> {Localization.brand} </Text>
                                             <LocalImageBrand source={cat1_image} originalHeight={30} originalWidth={30}/>
                                         </View>
                                         <View style={{flexDirection:'row', alignItems:'center'}}>
-                                            <Text style={{fontSize:hp((15/683.4*100).toString() + '%'), fontWeight:'800', color:'#083D5C',  textAlign:'left'}}> Product Code: Huawawi nova 3</Text>
+                                            <Text style={{fontSize:hp((15/683.4*100).toString() + '%'), fontWeight:'800', color:'#083D5C',  textAlign:'left'}}> {Localization.productCode} Huawawi nova 3</Text>
                                         </View>
                                         <View style={{flexDirection:'row', alignItems:'center'}}>
-                                            <Text style={{fontSize:hp((15/683.4*100).toString() + '%'), fontWeight:'800', color:'#083D5C',  textAlign:'left'}}> Availability: In Stock</Text>
+                                            <Text style={{fontSize:hp((15/683.4*100).toString() + '%'), fontWeight:'800', color:'#083D5C',  textAlign:'left'}}> {Localization.availability} In Stock</Text>
                                         </View>
                                         <View style={{flexDirection:'row', alignItems:'center'}}>
                                             <Text style={{fontSize:hp((15/683.4*100).toString() + '%'), fontWeight:'800', color:'#083D5C',  textAlign:'left'}}> 
-                                                Color: 
+                                                {Localization.color} 
                                             </Text>
                                         </View>
                                     </View>
@@ -189,7 +188,7 @@ class Product extends Component{
                                         </View>
                                         <View style={{justifyContent:'center', alignItems:'center'}}>
                                             <TouchableOpacity style={{backgroundColor:'#083D5C', width:wp('34%'), borderRadius:hp((5/683.4*100).toString() + '%'), justifyContent:'center', alignItems:'center'}}>
-                                                <Text style={{color:'white', fontSize:wp('4.8%')}} > Buy Now </Text>
+                                                <Text style={{color:'white', fontSize:wp('4.8%')}} > {Localization.buyNow} </Text>
                                             </TouchableOpacity>
                                         </View>
                                     </View>
@@ -201,17 +200,17 @@ class Product extends Component{
                         <View style={{height:hp('15%'), width:wp('96%'), backgroundColor:'white', borderWidth:wp('0.6%'), borderColor:'#013D62', marginHorizontal:wp('2%'), marginBottom:wp('1%'), borderRadius:wp('1%'), justifyContent:'center', alignItems:'center'}}>
                             {/* <View style={{width:wp('95%'), justifyContent:'center', alignItems:'center', borderRadius:hp((5/683.4*100).toString() + '%')}}> */}
                                 <Text style={styles.header4}>
-                                    Specifications
+                                    {Localization.specifications}
                                 </Text>
                                 <TouchableOpacity style={{backgroundColor:'#083D5C', borderRadius:3, position:'absolute', bottom:hp('1%'), right:wp('1%')}}>
-                                    <Text style={{color: 'white', fontSize:hp((12/683.4*100).toString() + '%')}}> Read more </Text>
+                                    <Text style={{color: 'white', fontSize:hp((12/683.4*100).toString() + '%')}}> {Localization.readMore} </Text>
                                 </TouchableOpacity>
                             {/* </View> */}
                         </View>
                         <View style={{height:hp('15%'), width:wp('96%'), backgroundColor:'white', borderWidth:wp('0.6%'), borderColor:'#013D62', marginHorizontal:wp('2%'), marginBottom:wp('1%'), borderRadius:wp('1%'), justifyContent:'center', alignItems:'center'}}>
                             {/* <View style={{width:wp('95%'), justifyContent:'center', alignItems:'center', borderRadius:hp((5/683.4*100).toString() + '%')}}> */}
                                 <Text style={styles.header4}>
-                                    Description
+                                    {Localization.description}
                                 </Text>
                                 <Text style={{color:'#044065', fontSize:wp('3.5%'), textAlign:'center'}}>  
                                     bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
@@ -225,7 +224,7 @@ class Product extends Component{
                         <View style={{height:hp((40/683.4*100).toString() + '%')}}>
                             <ImageBackground source={reviewBG} style={{flexDirection:'row', alignItems:'center', paddingLeft:wp((15/411.4*100).toString() + '%'), flex:1}}>
                                 <Icon name="file-text-o" size={20} color="white"/>
-                                <Text style={{color:'white', fontSize:hp((16/683.4*100).toString() + '%'), fontWeight:'bold'}}> Write Review </Text>
+                                <Text style={{color:'white', fontSize:hp((16/683.4*100).toString() + '%'), fontWeight:'bold'}}> {Localization.writeReview} </Text>
                             </ImageBackground>
                             {/* <Image source={header_bg} style={{width:100,  height:20}} /> */}
                         </View>
@@ -233,11 +232,11 @@ class Product extends Component{
                         <View style={{height:hp((140/683.4*100).toString() + '%')}}>
                             <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', paddingHorizontal:wp('1.5%'), paddingVertical:wp('0.5%'), }}>
                                 <Text style={{ color:'white', fontSize:hp((14/683.4*100).toString() + '%'), fontWeight:'600' }}>
-                                    Approximate Stuff
+                                    {Localization.approximateStuff}
                                 </Text>
                                 <TouchableOpacity>
                                     <Text style={{ color:'white', fontSize:hp((14/683.4*100).toString() + '%'), fontWeight:'600' }}>
-                                        See All
+                                        {Localization.seeAll}
                                     </Text>
                                 </TouchableOpacity>
                             </View>

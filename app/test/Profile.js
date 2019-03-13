@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator } from 'react-navigation';
+import Localization from '../localization/localization';
+
 import { Header } from 'react-native-elements';
 import axios from 'axios';
 import Dimensions from 'Dimensions';
@@ -107,7 +109,7 @@ class Login extends Component{
                         <View style={{margin:wp('2%'), justifyContent:'space-between', alignItems:'center', backgroundColor:'#F2F2F2', height:hp('6%'), width:wp('96%'), borderRadius:wp('2%'), flexDirection:'row'}}>
                             <TextInput
                                 style={{backgroundColor:'#D2D2D2', paddingLeft:wp('2%'), width:wp('86'), borderTopLeftRadius:wp('2%'), borderBottomLeftRadius:wp('2%') , height:hp('6%'), fontSize:wp('4.1%'), color:'white'}}
-                                placeholder="Search Products"
+                                placeholder={Localization.searchProduct}
                                 // secureTextEntry={this.props.secureTextEntry}
                                 autoCorrect={false}
                                 returnKeyType="next"
@@ -134,35 +136,35 @@ class Login extends Component{
                 
                 <View style={{backgroundColor:'blue', flexDirection:'row', height:hp('9%'),  alignItems:'center', justifyContent:'space-around', paddingLeft:wp('2%'), borderRadius:wp('1%'), margin:wp('2%')}}>
                     <TouchableOpacity onPress={()=>this.props.navigation.navigate('Wishlist')}>
-                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> My Wishlist </Text>
+                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> {Localization.myWhislist} </Text>
                     </TouchableOpacity>
                     <Icon size={wp('8%')} color="white" name="heart"/>
                 </View>
 
                 <View style={{backgroundColor:'blue', flexDirection:'row', height:hp('9%'),  alignItems:'center', justifyContent:'space-around', paddingLeft:wp('2%'), borderRadius:wp('1%'), margin:wp('2%')}}>
                     <TouchableOpacity onPress={()=>this.props.navigation.navigate('OrderHistory')}>
-                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> My Orders </Text>
+                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> {Localization.myOrders} </Text>
                     </TouchableOpacity>
                     <Icon size={wp('8%')} color="white" name="heart"/>
                 </View>
 
                 <View style={{backgroundColor:'blue', flexDirection:'row', height:hp('9%'),  alignItems:'center', justifyContent:'space-around', paddingLeft:wp('2%'), borderRadius:wp('1%'), margin:wp('2%')}}>
                     <TouchableOpacity onPress={()=>alert('share ? wait till finish')}>
-                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> Share with friends </Text>
+                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> {Localization.shareWithFriends} </Text>
                     </TouchableOpacity>
                     <Icon size={wp('8%')} color="white" name="share"/>
                 </View>
 
                 <View style={{backgroundColor:'blue', flexDirection:'row', height:hp('9%'),  alignItems:'center', justifyContent:'space-around', paddingLeft:wp('2%'), borderRadius:wp('1%'), margin:wp('2%')}}>
                     <TouchableOpacity onPress={()=>this.props.navigation.navigate('Compare')}>
-                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> Compare </Text>
+                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> {Localization.compare} </Text>
                     </TouchableOpacity>
                     <Icon size={wp('8%')} color="white" name="compress"/>
                 </View>
 
                 <View style={{backgroundColor:'blue', flexDirection:'row', height:hp('9%'),  alignItems:'center', justifyContent:'space-around', paddingLeft:wp('2%'), borderRadius:wp('1%'), margin:wp('2%')}}>
                     <TouchableOpacity onPress={()=>this.props.navigation.navigate('EditProfile')}>
-                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> Edit Profile </Text>
+                        <Text style={{color:'white', fontSize:wp('5%'), fontWeight:'bold', marginRight:wp("5%"), width:wp('42%'), textAlign:'center'}}> {Localization.editProfile} </Text>
                     </TouchableOpacity>
                     <Icon size={wp('8%')} color="white" name="star"/>
                 </View>

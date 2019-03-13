@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import {I18nManager} from 'react-native';
 import { addPlace } from './app/actions/plac';
 import { sendMessage } from './app/actions/auth';
 import RootNavigator from './app/navigator/RootNavigator';
@@ -21,6 +21,10 @@ import Home from './app/components/Home';
 import Cart from './app/test/Cart';
 import Test from './app/test/test';
 import Checkout1 from './app/test/Checkout1';
+import CheckoutDone from './app/test/CheckoutDone';
+import AddressBook from './app/test/AddressBook';
+import AddAddress from './app/test/AddAddress';
+import Payment from './app/test/Payment';
 import Product from './app/test/Product';
 import Search from './app/test/Search';
 import Login from './app/test/Login';
@@ -35,7 +39,8 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      rootPage: <SplashScreen/>
+      rootPage: <SplashScreen/>,
+      language:'en'
     }
     setTimeout(
       ()=>{
@@ -44,6 +49,12 @@ class App extends Component {
         });
       },1000
     )
+    localization.setLanguage(this.state.language);
+    if(this.state.language=='ar'){
+      I18nManager.forceRTL(true);
+    }else if(this.state.language=='en'){
+      I18nManager.forceRTL(false);
+    }
   }
 
   render() {
@@ -60,6 +71,10 @@ class App extends Component {
       // <Cart />
       // <OrderHistory />
       // <Product />
+      // <Payment />
+      // <CheckoutDone />
+      // <AddressBook />
+      // <AddAddress />
       // <Checkout1 />
       // <Test/>
     )

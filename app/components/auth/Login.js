@@ -16,6 +16,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator } from 'react-navigation';
 import { Header, CheckBox } from 'react-native-elements';
+import Localization from '../../localization/localization';
 import axios from 'axios';
 import Dimensions from 'Dimensions';
 import Swiper from 'react-native-swiper';
@@ -97,20 +98,20 @@ class Login extends Component{
                 <Image source={logo} resizeMode="contain" style={{width:wp('69%'), height:hp('10.8%'), position:'absolute', top:hp('6%'), left:wp('16%')}}/>
                 <View style={{paddingHorizontal:25, height:hp('34%'), marginTop: hp('16%')}}>
                     <View style={{flexDirection:'row'}} >
-                        <Text style={{fontWeight:'300', fontSize:26, color:'black'}} >Log in</Text>
+                        <Text style={{fontWeight:'300', fontSize:26, color:'black'}} >{Localization.login}</Text>
                         <Image source={user} style={{width:DW/8.5, height:DW/8.5, position:'relative', left:0}}/>
                     </View>
                     <View style={{flexDirection:'row'}} >
-                        <Text style={{fontWeight:'400', fontSize:14, color:'black'}} >Don't have an account? </Text>
+                        <Text style={{fontWeight:'400', fontSize:14, color:'black'}} >{Localization.dontHaveAccount} </Text>
                         <TouchableOpacity>
-                            <Text style={{color:'#03426D'}}>Create now. </Text>
+                            <Text style={{color:'#03426D'}}>{Localization.createNow} </Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', width:wp('84%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('11%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                            placeholder="First Name"
+                            placeholder={Localization.firstName}
                             // secureTextEntry={this.props.secureTextEntry}
                             autoCorrect={false}
                             returnKeyType="next"
@@ -128,7 +129,7 @@ class Login extends Component{
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center', paddingBottom:hp('1%')}} >
                         <TextInput
                             style={{backgroundColor:'#D2D2D2', width:wp('84%'), borderRadius:4, height:hp('6.6%'), position:'relative', left:wp('11%'), paddingHorizontal:10, fontSize:18, color:'white'}}
-                            placeholder="First Name"
+                            placeholder={Localization.firstName}
                             // secureTextEntry={this.props.secureTextEntry}
                             autoCorrect={false}
                             returnKeyType="next"
@@ -145,7 +146,7 @@ class Login extends Component{
 
                     <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center', marginVertical:hp('2.5%')}}>
                         <CheckBox
-                        title="Remember me"
+                        title={Localization.rememberMe}
                         checked={this.state.checked}
                         checkedColor='#03426D'
                         uncheckedColor='#03426D'
@@ -155,7 +156,7 @@ class Login extends Component{
                         style={{padding:0, position:'absolute', top:0, margin:0}}
                         />
                         <TouchableOpacity onPress={()=> {this.props.navigation.navigate('Forget');}}>
-                            <Text style={{color:'black', fontWeight:'500'}}> Forget Password? </Text>
+                            <Text style={{color:'black', fontWeight:'500'}}> {Localization.forgetPassword} </Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{justifyContent:'center', alignItems:'center'}}>
@@ -164,7 +165,7 @@ class Login extends Component{
                             {/* <Icon name='sign-in'  size={20} color='white'/> */}
                             <Icon name='sign-in'  size={25} color='white'/>
                             {/* <Text style={{color:'white', fontWeight:'bold', fontSize:14}}> login </Text> */}
-                            <Text style={{color:'white', fontWeight:'bold', fontSize:16}}> login </Text>
+                            <Text style={{color:'white', fontWeight:'bold', fontSize:16}}> {Localization.login} </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -179,17 +180,17 @@ class Login extends Component{
                             {/* <Icon name='sign-in'  size={20} color='white'/> */}
                             <Icon name='sign-in'  size={25} color='white'/>
                             {/* <Text style={{color:'white', fontWeight:'bold', fontSize:14}}> login </Text> */}
-                            <Text style={{color:'white', fontWeight:'bold', fontSize:16}}> sign up </Text>
+                            <Text style={{color:'white', fontWeight:'bold', fontSize:16}}> {Localization.signup} </Text>
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity style={{ flexDirection:'row', backgroundColor:'#3C5A9A', justifyContent:'center', alignItems:'center', height:hp('7%'), borderRadius:5, width:wp('70%')}}>
                             <Icon name="facebook-square" size={40} color="white" style={{paddingHorizontal:4, marginLeft:2}}/>
-                            <Text style={{color:'white', fontSize:18, fontWeight:'bold', paddingRight:16, paddingLeft:4, justifyContent:'center', alignItems:'center'}}>Continue with facebook</Text>
+                            <Text style={{color:'white', fontSize:18, fontWeight:'bold', paddingRight:16, paddingLeft:4, justifyContent:'center', alignItems:'center'}}>{Localization.continueWithFacebook}</Text>
                     </TouchableOpacity>
         
                     <TouchableOpacity style={{ flexDirection:'row', backgroundColor:'#CB4738', justifyContent:'center', alignItems:'center', height:hp('7%'), borderRadius:5, width:wp('70%')}}>
                         <Icon name="google-plus-square" size={40} color="white" style={{paddingHorizontal:4}}/>
-                        <Text style={{color:'white', fontSize:18, fontWeight:'bold', paddingRight:16, paddingLeft:4, justifyContent:'center', alignItems:'center'}}>Continue with Google +</Text>
+                        <Text style={{color:'white', fontSize:18, fontWeight:'bold', paddingRight:16, paddingLeft:4, justifyContent:'center', alignItems:'center'}}>{Localization.continueWithGoogle}</Text>
                     </TouchableOpacity>
                 </View>
              </ImageBackground>
